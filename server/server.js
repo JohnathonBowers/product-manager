@@ -11,12 +11,7 @@ parse the request.body data */
 app.use( express.json() );
 app.use( express.urlencoded({ extended: true }) );
 
-// Longhand method of importing routes:
-// const AllMy<User>Routes = require("./routes/<user>.routes");
-// AllMy<User>Routes(app);
-
-// Shorthand method:
-// require("./routes/<user>.routes")(app);
+require("./routes/product.routes")(app);
 
 // The following line of code actually runs our server on a specified port
 app.listen( port, () => console.log(`Listening on port: ${port}`) );

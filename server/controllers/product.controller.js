@@ -1,4 +1,4 @@
-const Product = require("../models.product.model");
+const Product = require("../models/product.model");
 
 // Create new product
 module.exports.createNewProduct = (req, res) => {
@@ -21,7 +21,7 @@ module.exports.createNewProduct = (req, res) => {
 module.exports.findAllProducts = (req, res) => {
     Product.find()
         .then(allProducts => {
-            res.json({allProducts})
+            res.json({products: allProducts})
         })
         .catch(err => {
             res.json({message: "Something went wrong.", error: err})
