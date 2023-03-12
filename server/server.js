@@ -1,11 +1,11 @@
 const express = require("express");
-// const cors = require("cors");
+const cors = require("cors");
 const app = express();
 const port = 8000;
 
 require("./config/mongoose.config");
 
-// app.use(cors())
+app.use(cors())
 /* The code below allows us to access POST data. They provide and
 parse the request.body data */
 app.use( express.json() );
