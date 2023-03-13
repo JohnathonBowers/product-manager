@@ -35,7 +35,7 @@ const ProductForm = (props) => {
     }
 
     return (
-        <div className="container col-sm-6 mt-4 pt-4 border border-dark">
+        <div className="container col-sm-6 mt-4 pt-4">
             <h1 className="text-center">Product Manager</h1>
             <form onSubmit={handleSubmit}>
                 <div className="d-flex flex-row my-4">
