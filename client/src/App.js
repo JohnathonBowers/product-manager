@@ -1,10 +1,12 @@
-import ProductForm from "./components/ProductForm";
-
+import { Routes, Route } from 'react-router-dom';
+import Main from './views/Main';
 
 function App() {
   return (
     <div>
-      <ProductForm />
+      <Routes>
+        <Route element={<Main />} path="/home" default />
+      </Routes>
     </div>
   );
 }
