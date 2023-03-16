@@ -4,7 +4,7 @@ const ProductSchema = new mongoose.Schema({
     title: {
         type: String,
         required: [true, "Title is required."],
-        minlength: [2, "Title must be at least two characters long"]
+        minlength: [2, "Title must be at least two characters long."]
     },
     // I used ChatGPT to figure out how to best store currency using Mongoose.
     price: {
