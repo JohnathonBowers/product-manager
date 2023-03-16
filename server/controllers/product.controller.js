@@ -27,3 +27,14 @@ module.exports.findAllProducts = (req, res) => {
             res.json({message: "Something went wrong.", error: err})
         });
 }
+
+// Get one product
+module.exports.findOneProduct = (req, res) => {
+    Product.findById(req.params.id)
+        .then(oneProduct => {
+            res.json(oneProduct)
+        })
+        .catch(err => {
+            res.json({message: "Something went wrong.", error: err})
+        });
+}
