@@ -3,6 +3,8 @@ import axios from "axios";
 
 const ProductForm = (props) => {
 
+    const {products, setProducts} = props;
+    
     const [product, setProduct] = useState({
         title: "",
         price: "",
@@ -25,13 +27,14 @@ const ProductForm = (props) => {
             .then(res => {
                 console.log(res);
                 console.log(res.data);
+                setProducts([...products, res.data]);
+                setProduct({
+                    title: "",
+                    price: "",
+                    description: ""
+                })
             })
             .catch(err => console.log(err))
-        setProduct({
-            title: "",
-            price: "",
-            description: ""
-        })
     }
 
     return (
@@ -79,8 +82,8 @@ const ProductForm = (props) => {
                 <div className="row my-4 mx-2 justify-content-end">
                     {
                         product.title.length >= 2 && priceNumber >= 0 && product.description.length >= 10 && product.description.length <= 300 ?
-                        <input type="submit" className="btn btn-primary col-sm-2" value="Submit" /> :
-                        <input type="submit" className="btn btn-primary col-sm-2" value="Submit" disabled/>
+                        <input type="submit" className="btn btn-primary col-sm-3" value="Submit" /> :
+                        <input type="submit" className="btn btn-primary col-sm-3" value="Submit" disabled/>
                     }
                 </div>
             </form>
