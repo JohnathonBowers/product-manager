@@ -49,3 +49,12 @@ module.exports.updateOneProduct = (req, res) => {
             res.json({message: "Something went wrong.", error: err})
         });
 }
+
+// Delete one product
+module.exports.deleteOneProduct = (req, res) => {
+    Product.findByIdAndDelete(req.params.id)
+        .then(deleteConfirmation => res.json(deleteConfirmation))
+        .catch(err => {
+            res.json({message: "Something went wrong.", error: err})
+        });
+}

@@ -8,6 +8,18 @@ const ProductList = (props) => {
 
     const navigate = useNavigate();
 
+    const removeFromDom = (productId) => {
+        setProducts(products.filter(product => product._id !== productId));
+    }
+
+    const deleteProduct = (productId) => {
+        axios.delete("http://localhost:8000/api/products/" + productId)
+        .then(res => {
+            removeFromDom(productId);
+        })
+        .catch(err => console.log(err));
+    }
+
     useEffect(() => {
         axios.get("http://localhost:8000/api/products")
             .then((res) => {
@@ -25,8 +37,9 @@ const ProductList = (props) => {
                 products.map((product, index) => {
                     return (
                         <div key={index} className="my-2 d-flex flex-row align-items-center">
-                            <Link to={`/products/${product._id}`} className="me-2">{product.title}</Link>
-                            <button className="btn btn-warning" onClick={e => navigate(`/products/edit/${product._id}`)}>Edit</button>
+                            <Link to={`/products/${product._id}`} className="mx-2">{product.title}</Link>
+                            <button className="btn btn-warning mx-2" onClick={e => navigate(`/products/edit/${product._id}`)}>Edit</button>
+                            <button className="btn btn-danger mx-2" onClick={e => deleteProduct(product._id)}>Delete</button>
                         </div>
                     )
                 })
