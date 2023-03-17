@@ -1,10 +1,12 @@
 import React, { useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
 const ProductList = (props) => {
 
     const {products, setProducts} = props;
+
+    const navigate = useNavigate();
 
     useEffect(() => {
         axios.get("http://localhost:8000/api/products")
@@ -22,8 +24,9 @@ const ProductList = (props) => {
             {
                 products.map((product, index) => {
                     return (
-                        <div key={index} className="my-2">
-                            <Link to={`/products/${product._id}`}>{product.title}</Link>
+                        <div key={index} className="my-2 d-flex flex-row align-items-center">
+                            <Link to={`/products/${product._id}`} className="me-2">{product.title}</Link>
+                            <button className="btn btn-warning" onClick={e => navigate(`/products/edit/${product._id}`)}>Edit</button>
                         </div>
                     )
                 })

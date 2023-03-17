@@ -38,3 +38,14 @@ module.exports.findOneProduct = (req, res) => {
             res.json({message: "Something went wrong.", error: err})
         });
 }
+
+// Update one product
+module.exports.updateOneProduct = (req, res) => {
+    Product.findByIdAndUpdate(req.params.id, req.body,{new: true, runValidators: true})
+        .then(updatedProduct => {
+            res.json(updatedProduct)
+        })
+        .catch(err => {
+            res.json({message: "Something went wrong.", error: err})
+        });
+}
