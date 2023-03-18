@@ -10,7 +10,6 @@
     "react-router-dom": "^6.9.0",
     "react-scripts": "5.0.1"
   },
-  "homepage": "/products",
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
